@@ -2,9 +2,72 @@ import * as React from 'react'
 import styles from './styles.module.css'
 
 interface Props {
-  text: string
+  onRequestClose: () => void
+  onCancel: () => void
+  onClick: (i: number) => void
+  cancelText: string
+  show: boolean
+  menus: string[]
+  showCancelButton: boolean
 }
 
-export const ExampleComponent = ({ text }: Props) => {
-  return <div className={styles.test}>Example Component: {text}</div>
+const Actionsheet = (props: Props) => {
+  const {
+    onRequestClose,
+    cancelText,
+    menus,
+    show,
+    showCancelButton,
+    onClick
+  } = props
+
+  const handleClick = (e: any) => onClick(e.target.getAttribute('data-id'))
+
+  return (
+    <div className={[styles.actionsheet, show ? styles.show : ''].join(' ')}>
+      {/* backdrop is blur black background sheet behind our content */}
+      {show ? (
+        <div onClick={onRequestClose} className={styles.backdrop} />
+      ) : null}
+      <div className={styles.wrap}>
+        <div className={styles.menu}>
+          {menus.map((text, i) => {
+            // Passing index in each item to perform any specific operation in-terms of indices of menu */
+            return (
+              <div
+                key={i}
+                className={styles['menu-item']}
+                data-id={i}
+                onClick={handleClick}
+              >
+                {text}
+              </div>
+            )
+          })}
+        </div>
+        {/* Manual btn to show cancel button if needed */}
+        {showCancelButton ? (
+          <div className={styles.cancel}>
+            <div className={styles['cancel-btn']} onClick={onRequestClose}>
+              {cancelText}
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  )
 }
+
+// Default values for props incase nothing is passed
+function none() {}
+Actionsheet.defaultProps = {
+  onRequestClose: none,
+  onCancel: none,
+  onClick: none,
+  cancelText: 'Cancel',
+  show: false,
+  menus: [],
+  showCancelButton: false
+}
+
+export default Actionsheet
