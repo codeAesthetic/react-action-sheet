@@ -7,7 +7,7 @@ interface Props {
   cancelText: string
   visible: boolean
   menus: string[]
-  showCancelButton: boolean
+  showCancelButton?: boolean
 }
 
 const Actionsheet = (props: Props) => {
