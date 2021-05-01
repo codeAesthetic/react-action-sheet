@@ -58,14 +58,9 @@ const Actionsheet = (props: Props) => {
 }
 
 // Default values for props incase nothing is passed
-function none() {}
 Actionsheet.defaultProps = {
-  onRequestClose: none,
-  onClick: none,
   cancelText: 'Cancel',
-  visible: false,
-  menus: [],
-  showCancelButton: false
+  menus: []
 }
 
 export default Actionsheet
