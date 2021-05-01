@@ -9,12 +9,17 @@
 ```bash
 npm install --save responsive-react-actionsheet
 ```
-## Sample
-<img src="https://res.cloudinary.com/hassanraza786/image/upload/v1619360390/react-action-sheet_elkf0j.gif" alt="sample_gif" width="250" />
 
-if sample gif doesn't work <a target='_blank' href="https://res.cloudinary.com/hassanraza786/image/upload/v1619360390/react-action-sheet_elkf0j.gif" alt="sample">Click here to view sample</a>
+## Sample
+
+<img src="https://res.cloudinary.com/hassanraza786/image/upload/v1619901005/react-action-sheet_ibvmuo.gif" alt="sample_gif" width="250" />
+
+if sample gif doesn't work <a target='_blank' href="https://res.cloudinary.com/hassanraza786/image/upload/v1619901005/react-action-sheet_ibvmuo.gif" alt="sample">Click here to view sample</a>
+
 ## Usage
+
 Make sure you copy both import and css file as mentioned below.
+
 ```tsx
 import React, { useState } from 'react'
 
@@ -55,11 +60,12 @@ const App = () => {
           without Cancel Button
         </button>
         <Actionsheet
-          show={state.visible}
+          visible={state.visible}
           menus={menus}
           onRequestClose={onRequestClose}
           onClick={handleActionClick}
           showCancelButton={state.showCancelButton}
+          cancelText='Custom Cancel text'
         />
       </div>
       <div style={{ textAlign: 'center' }}>
@@ -71,6 +77,23 @@ const App = () => {
 
 export default App
 ```
+
+# Reference
+
+## API
+
+Description of props there functionality and usage.
+
+| Property         | description                                    | Type                            | Default  |
+| ---------------- | ---------------------------------------------- | ------------------------------- | -------- |
+| visible          | handles visibilty of action sheet              | boolean                         | false    |
+| menus            | Array of list items to show                    | string[]                        | -        |
+| onClick          | handle click on list items                     | function(index: number) => void | -        |
+| onRequestClose   | function to close Actionsheet                  | function() => void              |          |
+| showCancelButton | flag to show or hide cancel button             | boolean                         | false    |
+| cancelText       | modify cancel text if showCancelButton is true | string                          | 'Cancel' |
+
+#
 
 ## License
 

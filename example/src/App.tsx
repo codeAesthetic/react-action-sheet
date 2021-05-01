@@ -37,7 +37,7 @@ const App = () => {
           without Cancel Button
         </button>
         <Actionsheet
-          show={state.visible}
+          visible={state.visible}
           menus={menus}
           onRequestClose={onRequestClose}
           onClick={handleActionClick}

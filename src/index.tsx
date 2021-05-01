@@ -3,10 +3,9 @@ import styles from './styles.module.css'
 
 interface Props {
   onRequestClose: () => void
-  onCancel: () => void
   onClick: (i: number) => void
   cancelText: string
-  show: boolean
+  visible: boolean
   menus: string[]
   showCancelButton: boolean
 }
@@ -16,7 +15,7 @@ const Actionsheet = (props: Props) => {
     onRequestClose,
     cancelText,
     menus,
-    show,
+    visible,
     showCancelButton,
     onClick
   } = props
@@ -24,14 +23,14 @@ const Actionsheet = (props: Props) => {
   const handleClick = (e: any) => onClick(e.target.getAttribute('data-id'))
 
   return (
-    <div className={[styles.actionsheet, show ? styles.show : ''].join(' ')}>
+    <div className={[styles.actionsheet, visible ? styles.show : ''].join(' ')}>
       {/* backdrop is blur black background sheet behind our content */}
-      {show ? (
+      {visible ? (
         <div onClick={onRequestClose} className={styles.backdrop} />
       ) : null}
       <div className={styles.wrap}>
         <div className={styles.menu}>
-          {menus.map((text, i) => {
+          {menus.map((text: any, i: number) => {
             // Passing index in each item to perform any specific operation in-terms of indices of menu */
             return (
               <div
@@ -62,10 +61,9 @@ const Actionsheet = (props: Props) => {
 function none() {}
 Actionsheet.defaultProps = {
   onRequestClose: none,
-  onCancel: none,
   onClick: none,
   cancelText: 'Cancel',
-  show: false,
+  visible: false,
   menus: [],
   showCancelButton: false
 }
