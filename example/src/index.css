@@ -9,12 +9,26 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .container {
   display: flex;
   justify-content: center;
-  padding: 24px
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 24px;
+}
+
+.container button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.container button:hover {
+  border-color: #888;
 }

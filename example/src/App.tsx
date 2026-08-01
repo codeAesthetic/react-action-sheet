@@ -1,52 +1,55 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import Actionsheet from 'responsive-react-actionsheet'
-import 'responsive-react-actionsheet/dist/index.css'
+// Note: no stylesheet import. As of 1.1.0 the component injects its own styles.
 
 const menus = ['Modes', 'Profile', 'Settings']
 
+const darkTheme = {
+  backgroundColor: '#1f2430',
+  textColor: '#e6e6e6',
+  cancelTextColor: '#7dd3fc',
+  overlayColor: 'rgba(0, 0, 0, 0.7)'
+}
+
 const App = () => {
-  const [state, setState] = useState({
-    visible: false,
-    showCancelButton: false,
-    text: ''
-  })
+  const [visible, setVisible] = useState(false)
+  const [showCancelButton, setShowCancelButton] = useState(false)
+  const [themed, setThemed] = useState(false)
 
-  const handleActionSheet = (showCancelButton: boolean) => {
-    setState({ ...state, visible: !state.visible, showCancelButton })
-  }
-
-  const onRequestClose = () => {
-    setState({ ...state, visible: false })
+  const open = (options: { cancel?: boolean; dark?: boolean }) => {
+    setShowCancelButton(Boolean(options.cancel))
+    setThemed(Boolean(options.dark))
+    setVisible(true)
   }
 
   const handleActionClick = (i: number) => {
-    setState({ ...state, text: menus[i], visible: false })
+    // `i` is a real number since 1.1.0 — it used to arrive as the string "0".
+    console.log('selected', menus[i], 'at index', i, `(typeof ${typeof i})`)
+    setVisible(false)
   }
 
   return (
     <>
       <div className='container'>
-        <button
-          style={{ marginRight: 16 }}
-          onClick={() => handleActionSheet(true)}
-        >
+        <button onClick={() => open({ cancel: true })}>
           with Cancel Button
         </button>
-        <button onClick={() => handleActionSheet(false)}>
-          without Cancel Button
+        <button onClick={() => open({})}>without Cancel Button</button>
+        <button onClick={() => open({ cancel: true, dark: true })}>
+          themed (dark)
         </button>
-        <Actionsheet
-          visible={state.visible}
-          menus={menus}
-          onRequestClose={onRequestClose}
-          onClick={handleActionClick}
-          showCancelButton={state.showCancelButton}
-        />
       </div>
-      <div style={{ textAlign: 'center' }}>
-        <h4>{state.text}</h4>
-      </div>
+
+      <Actionsheet
+        visible={visible}
+        menus={menus}
+        onRequestClose={() => setVisible(false)}
+        onClick={handleActionClick}
+        showCancelButton={showCancelButton}
+        cancelText={themed ? 'Dismiss' : 'Cancel'}
+        {...(themed ? darkTheme : {})}
+      />
     </>
   )
 }
