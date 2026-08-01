@@ -17,11 +17,16 @@ npm install --save responsive-react-actionsheet
 
 React 16.8 or newer is required (it is a peer dependency).
 
-## Sample
+## Demo
 
-<img src="https://res.cloudinary.com/hassanraza786/image/upload/v1619901005/react-action-sheet_ibvmuo.gif" alt="sample_gif" width="250" />
+<img src="https://raw.githubusercontent.com/codeAesthetic/react-action-sheet/master/assets/demo.gif" alt="Action sheet demo showing the cancel button, the plain sheet, and a custom dark theme" width="320" />
 
-if sample gif doesn't work <a target='_blank' href="https://res.cloudinary.com/hassanraza786/image/upload/v1619901005/react-action-sheet_ibvmuo.gif" alt="sample">Click here to view sample</a>
+All three example variants, in order — with a cancel button, without one, and a
+fully themed dark sheet driven by the color props. Run it yourself:
+
+```bash
+cd example && npm install && npm run dev
+```
 
 ## Usage
 
