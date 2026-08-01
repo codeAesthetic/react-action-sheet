@@ -4,7 +4,14 @@
   "description": "Lightweight responsive action sheet for React web applications, with self-injecting styles and themeable colors",
   "author": "https://github.com/codeAesthetic",
   "license": "MIT",
-  "repository": "https://github.com/codeAesthetic/react-action-sheet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeAesthetic/react-action-sheet.git"
+  },
+  "homepage": "https://github.com/codeAesthetic/react-action-sheet#readme",
+  "bugs": {
+    "url": "https://github.com/codeAesthetic/react-action-sheet/issues"
+  },
   "sideEffects": [
     "*.css"
   ],
