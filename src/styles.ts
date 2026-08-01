@@ -1,0 +1,152 @@
+/* eslint-disable */
+/**
+ * GENERATED FILE — DO NOT EDIT.
+ * Edit src/styles.css and run `npm run styles` (or any build/test) to refresh.
+ */
+export const styles = `/*
+ * Single source of truth for the component's styles — edit this file, never
+ * src/styles.ts.
+ *
+ * It feeds the build two ways:
+ *   1. scripts/generate-styles.mjs turns it into src/styles.ts, which
+ *      src/injectStyles.ts injects at runtime — this is why consumers need no
+ *      CSS import;
+ *   2. scripts/copy-css.mjs copies it verbatim to dist/index.css, so the legacy
+ *      \`import 'responsive-react-actionsheet/dist/index.css'\` still works.
+ *
+ * Class names are hand-namespaced with \`ras-\` because CSS Modules are no longer
+ * in play — the names ship literally, so they must not collide with host apps.
+ *
+ * Colors are driven by custom properties. The Actionsheet component sets these
+ * inline on the root element when the matching prop is supplied; otherwise the
+ * defaults declared here apply. Consumers can also override them from their own
+ * stylesheet without touching props.
+ */
+
+.ras-actionsheet {
+  --ras-bg: rgba(246, 246, 246, 0.9);
+  --ras-text: #000;
+  --ras-cancel-text: #ff7878;
+  --ras-overlay: rgba(0, 0, 0, 0.5);
+}
+
+.ras-actionsheet * {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* backdrop is the blurred dimming sheet behind our content */
+.ras-backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: var(--ras-overlay);
+  backdrop-filter: blur(2px);
+}
+
+.ras-wrap {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+  z-index: 1001;
+  transform: translate3d(0, 101%, 0);
+}
+
+.ras-show .ras-wrap {
+  transform: translate3d(0, 0, 0);
+}
+
+.ras-menu {
+  background: var(--ras-bg);
+}
+
+.ras-show .ras-menu {
+  display: block;
+  border-radius: 12px;
+  transition: all 0.6s ease;
+  transform: translateY(0);
+}
+
+.ras-menu-item {
+  position: relative;
+  height: 57px;
+  width: 100%;
+  line-height: 57px;
+  text-align: center;
+  color: var(--ras-text);
+  cursor: pointer;
+}
+
+/*
+ * A translucent black wash rather than a fixed color pair: hover and pressed
+ * states have to stay legible against whatever \`backgroundColor\` the consumer
+ * passes, so the text color is left alone and only the surface is darkened.
+ *
+ * Hover is gated behind \`hover: hover\` so touch devices don't get a sticky
+ * highlight left behind after a tap.
+ */
+@media (hover: hover) {
+  .ras-menu-item:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+  }
+}
+
+.ras-menu-item:active {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+}
+
+/* hairline separator drawn at 0.5px via scale, so it stays crisp on retina */
+.ras-menu-item::after {
+  position: absolute;
+  display: block;
+  bottom: -100%;
+  right: -100%;
+  left: 0;
+  top: 0;
+  content: '';
+  box-sizing: border-box;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.ras-menu-item + .ras-menu-item::after {
+  border-top: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.ras-cancel {
+  margin-top: 8px;
+  border-radius: 12px;
+  background: var(--ras-bg);
+}
+
+.ras-cancel-btn {
+  height: 57px;
+  line-height: 57px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--ras-cancel-text);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .ras-cancel-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+  }
+}
+
+.ras-cancel-btn:active {
+  background: rgba(0, 0, 0, 0.12);
+}
+`
+
+export default styles
