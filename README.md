@@ -59,6 +59,11 @@ const App = () => {
         onRequestClose={() => setVisible(false)}
         showCancelButton
         cancelText='Custom Cancel text'
+        // the four color props are optional — omit them for the light default
+        backgroundColor='#1f2430'
+        textColor='#e6e6e6'
+        cancelTextColor='#7dd3fc'
+        overlayColor='rgba(0, 0, 0, 0.7)'
       />
 
       <h4>{selected}</h4>
@@ -88,21 +93,8 @@ export default App
 
 ## Styling
 
-Pass any of the four color props:
-
-```tsx
-<Actionsheet
-  visible={visible}
-  menus={menus}
-  onClick={handleActionClick}
-  onRequestClose={() => setVisible(false)}
-  showCancelButton
-  backgroundColor='#1f2430'
-  textColor='#e6e6e6'
-  cancelTextColor='#7dd3fc'
-  overlayColor='rgba(0, 0, 0, 0.7)'
-/>
-```
+The four color props are independent — pass only the ones you want to change,
+and the rest fall back to the defaults in the table above.
 
 Each prop sets a CSS custom property on the sheet's root element, so you can
 also theme it from your own stylesheet without touching props — useful for
